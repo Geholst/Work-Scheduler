@@ -18,20 +18,20 @@ $(".time-block").each(function (i, obj) {
    var presentTimeInt = parseInt(presentTime);
    if (elementTime === presentTimeInt) {
       $(obj).addClass("present");
-      $(obj).removeClass("future");
       $(obj).removeClass("past");
+      $(obj).removeClass("future");
    }
-   else if (elementTime < presentTime) {
-   $(obj).addClass("past");
-   $(obj).removeClass("future");
+   else if (elementTime > presentTime) {
+   $(obj).addClass("future");
+   $(obj).removeClass("past");
    $(obj).removeClass("present");
    }
    else {
-      $(obj).addClass("future");
+      $(obj).addClass("past");
       $(obj).removeClass("future");
-      $(obj).removeClass("past");
+      $(obj).removeClass("present");
    } 
-   
+   //stores values to local storage
    $("#hour-9").children(".description").val(localStorage.getItem("hour-9"));
   $("#hour-10").children(".description").val(localStorage.getItem("hour-10"));
   $("#hour-11").children(".description").val(localStorage.getItem("hour-11"));
@@ -50,7 +50,7 @@ $(".time-block").each(function (i, obj) {
 
 // Adds time to page
    var today = dayjs();
-$("#currentDay").text(today.format('dddd, MMMM D YYYY'));
+$("#currentDay").text(today.format('dddd, MMMM D YYYY, H'));
   console.log(today)
 
 
